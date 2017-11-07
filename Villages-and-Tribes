@@ -1,0 +1,72 @@
+import java.util.Scanner;
+public class Main{
+public static void main(String args[]){
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	
+
+	/*Test Case For Loop*/
+	for(int i=0;i<T;i++){
+		boolean flagA=false;
+		boolean flagB=false;
+		int countA=0;
+		int countB=0;
+		int countD=0;
+		char c=' ';
+	   String S=sc.next();
+		
+		/*String Length For Loop*/
+		for(int j=0;j<S.length();j++){
+			if(S.charAt(j)=='A'){
+				c='A';
+				countA++;
+				if(flagA==true){
+					countA=countA+countD;
+					countD=0;
+					flagA=false;
+				}	
+			}
+			else if(S.charAt(j)=='B'){
+				c='B';
+				countB++;
+				if(flagB==true){
+					countB=countB+countD;
+					countD=0;
+					flagB=false;
+				}
+			}
+			else{
+
+				if(c=='A'){
+					if (flagA==false){
+						flagA=true;						
+					}
+					if(flagB==true){
+						flagB=false;
+						countD=0;
+					}
+					countD++;
+				}
+				if(c=='B'){
+					if(flagB==false){
+						flagB=true;						
+					}
+					if(flagA==true){
+						flagA=false;
+						countD=0;
+					}
+					countD++;
+				}
+				
+			}
+		
+		}/*End of String For Loop*/
+		
+		System.out.println(countA+" "+countB);
+
+	}/*End of Test Case for loop*/
+	
+
+
+}
+}
